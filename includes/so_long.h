@@ -8,21 +8,30 @@
 
 #include "../mlx/mlx.h"
 #include "../mlx/mlx_int.h"
+#include "../includes/ft_printf.h"
+#include "../includes/get_next_line.h"
+#include "../libft/libft.h"
 
-typedef struct s_game
+typedef struct s_graphics
 {
 	void *player;
 	void *collectible;
 	void *exit;
 	void *wall;
-	void *back;
-}	t_game;
+	void *floor;
+}	t_graphics;
 
 typedef struct s_map
 {
-	int x;
-	int y;
+	int width;
+	int height;
+	int moves;
+	int player_x;
+	int player_y;
 	char **map;
+	int n_collect;
+	int exit_x;
+	int exit_y;
 }	t_map;
 
 #endif
