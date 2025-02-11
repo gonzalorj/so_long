@@ -15,4 +15,5 @@ int main(int ac, char **av)
 	if (fd < 0)
 		ft_error();
 	start_game(t_game *game, int fd);
+	
 }

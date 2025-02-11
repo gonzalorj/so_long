@@ -11,3 +11,13 @@ void check_file(int ac, char **av)
 		exit (1);
 	}
 }
+
+void check_line(char *str)
+{
+	if (ft_strnstr(str, "\n\n", ft_strlen(str)) || str[ft_strlen(str) - 1] == '\n')
+	{
+		ft_printf("Error\nInvalid map format\n");
+		exit(1);
+	}
+}
+
