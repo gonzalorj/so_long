@@ -3,8 +3,8 @@
 int main(int ac, char **av)
 {
 	t_game *game;
-	int row;
-	int column;
+	int x;
+	int y;
 	int fd;
 
 	if(ac ! 2)
@@ -14,6 +14,9 @@ int main(int ac, char **av)
 	fd = open(av[1], 0_O_RDONLY);
 	if (fd < 0)
 		ft_error();
-	start_game(t_game *game, int fd);
-	
+	start_game(game, fd);
+	full_parse_map(game);
+	player_pos(game, &x, &y);
+	if (flood_fill(mapa, x, y))
+		ft_error();
 }

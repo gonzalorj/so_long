@@ -21,3 +21,14 @@ void check_line(char *str)
 	}
 }
 
+void check_count(t_game *game)
+{
+	if (game.player_count != 1 || game.exit_count != 1
+		|| game.consum_count < 1)
+		ft_error();
+}
+
+int flood_fill(t_game *game, int x, int y)
+{
+		
+}

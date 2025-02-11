@@ -40,8 +40,33 @@ void check_lines_len(char **map)
 	}
 }
 
+void check_inside(t_map *game, char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while(map[i])
+	{
+		j = 0;
+		while(map[i][j])
+		{
+			if(map[i][j] == 'P')
+				game->player_count++;
+			else if (map[i][j] == 'E')
+				game->exit_count++;
+			else if (map[i][j] == 'C')
+				game->consum_count++;
+			j++;
+		}
+		i++;
+	}
+	check_count(*game);
+}
+
 void full_parse_map(t_game *game)
 {
 	check_borders(game->map, 0, 0);
 	check_lines_len(game->map);
+	check_inside(game, game->map);
 }
