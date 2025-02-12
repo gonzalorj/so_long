@@ -32,7 +32,7 @@ void create_map(t_game *game, int fd)
 	check_line(join);
 	free (s);
 	game->map = ft_split(join, '\n');
-	game->mapc = ft_split(join, '\n');
+	game->map = ft_split(join, '\n');
 	free (join);
 	if(!game->map)
 		ft_error();

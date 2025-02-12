@@ -17,6 +17,7 @@ int main(int ac, char **av)
 	start_game(game, fd);
 	full_parse_map(game);
 	player_pos(game, &x, &y);
-	if (flood_fill(mapa, x, y))
+	if (flood_fill(game, x, y))
 		ft_error();
+	init(game);
 }
