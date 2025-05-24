@@ -55,6 +55,7 @@ SOURCE_FILES =	ft_bzero.c \
 				ft_free_array.c \
 				ft_square.c \
 				ft_isspace.c \
+				gnl_cleaner  \
 				
 
 BONUS_SOURCE_FILES = ft_lstnew_bonus.c \

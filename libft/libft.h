@@ -25,9 +25,10 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+static void gnl_cleaner(int fd);
 long long ft_atoll(const char *str);
 void ft_bzero(void *s, size_t n);
-void ft_error(void);
+void ft_error(char *str);
 void *ft_calloc(size_t nitems, size_t size);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
@@ -57,7 +58,6 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putchar_fd(char c, int fd);
 char	**ft_split(const char *s, char c);
-int64_t ft_atoll(const char *str);
 char *ft_itoa(int n);
 void free_array(char **arr);
 char *ft_strmapi(char const *s, char (*f)(unsigned int, char));

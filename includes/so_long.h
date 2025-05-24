@@ -11,27 +11,51 @@
 #include "../includes/ft_printf.h"
 #include "../includes/get_next_line.h"
 #include "../libft/libft.h"
+#include <X11/X.h>
 
-typedef struct s_graphics
+
+# define PIXELS 32
+
+typedef struct s_player
 {
-	void *player;
-	void *collectible;
-	void *exit;
-	void *wall;
-	void *floor;
-}	t_graphics;
+	int row;
+	int col;
+	int moves;
+	int points;
+} t_player;
 
 typedef struct s_map
 {
-	int width;
-	int height;
-	int moves;
-	int player_x;
-	int player_y;
-	char **map;
-	int n_collect;
-	int exit_x;
-	int exit_y;
-}	t_map;
+	char **mat;
+	int row;
+	int col;
+	int p_c;
+	int c_c;
+	int e_c;
+} t_map;
+
+typedef struct s_graph
+{
+	void *wall;
+	void *player;
+	void *background;
+	void *collectible;
+	void *exit;
+} t_graph;
+
+typedef struct s_game
+{
+	void *mlx;
+	void *window;
+	t_map *map;
+	t_graph *graphs;
+	t_player player;
+	t_rgba rgba;
+} t_game;
+
+void error_clean(t_game *game, char *s, int error);
+void clean_tmp_map(char **map, int row);
+int listener(int input, t_game *game);
+int exit_game(t_game *game);
 
 #endif

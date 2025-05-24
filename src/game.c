@@ -1,39 +1,50 @@
 #include "../includes/so_long.h"
 
-void start_game(t_game *game, int fd)
+t_map *start_map(void)
 {
-	int i;
+	t_game *map;
 
-	create_map(game, fd);
-	game->width = ft_strlen(game->map[0]);
-	i = 0;
-	while(game->map[i])
-		i++;
-	game->height = i;
-	if(game->height < 3)
-		ft_error();
+	map = (t_game*)ft_calloc(1, sizeof(t_game));
+	if (!map)
+		return (NULL);
+	return (map);
 }
 
-void create_map(t_game *game, int fd)
+t_graph *start_graphs(void)
 {
-	char *s;
-	char *join;
+	t_graph *graphs;
 
-	join = ft_strdup("");
-	s = get_next_line(fd);
-	if(!s || s[0] == "\n")
-		ft_error();
-	while(s)
-	{
-		join = ft_strjoin(join, s);
-		free (s);
-		s = get_next_line(fd);
-	}
-	check_line(join);
-	free (s);
-	game->map = ft_split(join, '\n');
-	game->map = ft_split(join, '\n');
-	free (join);
-	if(!game->map)
-		ft_error();
+	graphs = (t_game*)ft_calloc(1, sizeof(t_game));
+	if (!graphs)
+		return (NULL);
+	return (graphs);
+}
+
+t_game *start_game(void)
+{
+	t_game *so_long;
+
+	so_long = (t_game *)ft_calloc(1, sizeof(t_game));
+	if (!so_long)
+		ft_error("Memory allocation failed.");
+	so_long->map = start_map();
+	if (!so_long->map)
+		ft_error("Memory allocation failed.");
+	so_long->graphs = start_graphs();
+	if(!so_long->graphs)
+		ft_error("Memory allocation failed.");
+	so_long->rgba = start_rgba();
+	so_long->player.moves = 1;
+	return(so_long);
+}
+
+void start_mlx(t_game *game)
+{
+	game->mlx = mlx_init();
+	if (!game->mlx)
+		ft_error("Mlx failed.");
+	game->window = mlx_new_window(game->mlx, (game->map->col * PIXELS),
+	(game->map->row * PIXELS), "so_long");
+	if (!game->window)
+		ft_error("Mlx window failed");
 }
