@@ -8,8 +8,6 @@
 
 #include "../mlx/mlx.h"
 #include "../mlx/mlx_int.h"
-#include "../includes/ft_printf.h"
-#include "../includes/get_next_line.h"
 #include "../libft/libft.h"
 #include <X11/X.h>
 
@@ -50,12 +48,23 @@ typedef struct s_game
 	t_map *map;
 	t_graph *graphs;
 	t_player player;
-	t_rgba rgba;
 } t_game;
 
-void error_clean(t_game *game, char *s, int error);
 void clean_tmp_map(char **map, int row);
-int listener(int input, t_game *game);
+void error_clean(t_game *game, char *s, int error);
+t_map *start_map(void);
+t_graph *start_graphs(void);
+t_game *start_game(void);
+void start_mlx(t_game *game);
+void count_elements(t_game *game);
 int exit_game(t_game *game);
+int listener(int input, t_game *game);
+void m_create(char *path, t_game *game);
+void check_valid_shape(t_game *game);
+void check_elements(t_game *game);
+void check_borders(t_game *game);
+void check_fill(t_game *game);
+void get_images(t_game *game);
+void load(t_game *game);
 
 #endif

@@ -6,9 +6,9 @@ static void *mlx_image(t_game *game, char *path)
 	int width;
 	int height;
 
-	img = mlx_xpm_file_to_image(game->mlx, img, width, height);
+	img = mlx_xpm_file_to_image(game->mlx, img, &width, &height);
 	if (!img)
-		ft_error("Image failed");
+		error_clean(game, "Mlx img failed.", 1);
 	return (img);
 }
 
@@ -46,14 +46,14 @@ void load(t_game *game)
 	int col;
 
 	row = 0;
-	while(game->map->mat[row] != NULL)
+	while (game->map->mat[row] != NULL)
 	{
 		col = 0;
-		while(game->map->mat[row][col])
+		while (game->map->mat[row][col])
 		{
 			img = pos_value(game, game->map->mat[row][col]);
 			mlx_put_image_to_window(game->mlx, game->window, img,
-				 col * PIXELS, row * PIXELS);
+									col * PIXELS, row * PIXELS);
 			col++;
 		}
 		row++;

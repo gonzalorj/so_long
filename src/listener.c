@@ -2,14 +2,29 @@
 
 int exit_game(t_game *game)
 {
-	ft_error("closed");
+	error_clean(game, "Game stopped", 0);
 	return 0;
 }
 
-static void	input_move(int input, t_game *game)
+static void print_moves(t_game *game)
 {
-	int	row;
-	int	col;
+	ft_putstr_fd("Moves:", 1);
+	ft_putnbr_fd(game->player.moves++, 1);
+	write(1, "\n", 1);
+	if (game->map->mat[game->player.row][game->player.col] == 'C')
+	{
+		game->map->mat[game->player.row][game->player.col] = '0';
+		game->map->c_c--;
+	}
+	if (game->map->mat[game->player.row][game->player.col] == 'E' &&
+		game->map->c_c == 0)
+		error_clean(game, "Game stopped", 0);
+}
+
+static void input_move(int input, t_game *game)
+{
+	int row;
+	int col;
 
 	row = game->player.row;
 	col = game->player.col;
@@ -22,7 +37,7 @@ static void	input_move(int input, t_game *game)
 	else if (input == XK_d || input == XK_Right)
 		col++;
 	else if (input == XK_Escape)
-		ft_error("game closed");
+		error_clean(game, "Game stopped", 0);
 	if (game->map->mat[row][col] != '1')
 	{
 		game->player.row = row;
@@ -31,27 +46,14 @@ static void	input_move(int input, t_game *game)
 	}
 }
 
-static void print_moves(t_game *game)
-{
-	ft_putstr("Moves:");
-	ft_putnbr(game->player.moves++);
-	write(1, "\n", 1);
-	if (game->map->mat[game->player.row][game->player.col] == 'C')
-	{
-		game->map->mat[game->player.row][game->player.col] = '0';
-		game->map->c_c--;
-	}
-	if (game->map->mat[game->player.row][game->player.col] == 'E' &&
-		game->map->c_c == 0)
-		ft_error("Game finished.");
-}
+
 
 int listener(int input, t_game *game)
 {
-	if (input == XK_w || input == XK_a || input == XK_s
-		|| input == XK_d || input == XK_Escape);
+	if (input == XK_w || input == XK_a || 
+		input == XK_s || input == XK_d || input == XK_Escape);
 	{
-		move(input, game);
+		input_move(input, game);
 		load(game);
 	}
 }
