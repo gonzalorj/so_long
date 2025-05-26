@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gorodrig <gorodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 12:19:02 by gorodrig          #+#    #+#             */
+/*   Updated: 2025/05/26 12:19:02 by gorodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-static void get_rows(t_game *game, char *path)
+static void	get_rows(t_game *game, char *path)
 {
-	char *row;
-	int fd;
+	char	*row;
+	int		fd;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -24,9 +36,9 @@ static void get_rows(t_game *game, char *path)
 		error_clean(game, "Allocation failed", 1);
 }
 
-static void gnl_cleaner(int fd)
+static void	gnl_cleaner(int fd)
 {
-	char *line;
+	char	*line;
 
 	line = get_next_line(fd);
 	while (line)
@@ -37,11 +49,11 @@ static void gnl_cleaner(int fd)
 	free(line);
 }
 
-static void mat_reader(int fd, t_game *game)
+static void	mat_reader(int fd, t_game *game)
 {
-	char *line;
-	int i;
-	char *clean_row;
+	char	*line;
+	int		i;
+	char	*clean_row;
 
 	line = get_next_line(fd);
 	i = 0;
@@ -61,9 +73,9 @@ static void mat_reader(int fd, t_game *game)
 	game->map->mat[i] = NULL;
 }
 
-void m_create(char *path, t_game *game)
+void	m_create(char *path, t_game *game)
 {
-	int fd;
+	int	fd;
 
 	get_rows(game, path);
 	fd = open(path, O_RDONLY);
@@ -73,10 +85,10 @@ void m_create(char *path, t_game *game)
 	close(fd);
 }
 
-void check_valid_shape(t_game *game)
+void	check_valid_shape(t_game *game)
 {
-	int i;
-	int len;
+	int	i;
+	int	len;
 
 	i = 0;
 	game->map->col = (int)ft_strlen(game->map->mat[0]);

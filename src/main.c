@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gorodrig <gorodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 12:18:57 by gorodrig          #+#    #+#             */
+/*   Updated: 2025/05/26 12:18:57 by gorodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-void check_name(char *name)
+void	check_name(char *name)
 {
-	int len;
+	int	len;
 
 	len = ft_strlen(name);
 	if (!name)
@@ -11,11 +23,11 @@ void check_name(char *name)
 		error_clean(NULL, "Invalid map extension.", 1);
 }
 
-void check_full_file(char *path)
+void	check_full_file(char *path)
 {
-	int fd;
-	char *test_line;
-	char *name;
+	int		fd;
+	char	*test_line;
+	char	*name;
 
 	if (!ft_strnstr(path, "map/", ft_strlen(path)))
 		error_clean(NULL, "Directory name is wrong or doesn't exist.", 1);
@@ -40,7 +52,7 @@ void check_full_file(char *path)
 	close(fd);
 }
 
-void map_checker(char *path, t_game *game)
+void	map_checker(char *path, t_game *game)
 {
 	m_create(path, game);
 	check_valid_shape(game);
@@ -49,21 +61,16 @@ void map_checker(char *path, t_game *game)
 	check_fill(game);
 }
 
-static void start_window(t_game *game)
+static void	start_window(t_game *game)
 {
 	start_mlx(game);
 	get_images(game);
 	load(game);
-	if (mlx_string_put(game->mlx, game->window,
-					   (game->map->col * PIXELS - 60) / 2,
-					   (game->map->row * PIXELS / 2),
-					   0xFFFFFF, "GO!") != 0)
-		ft_error("");
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_game *so_long;
+	t_game	*so_long;
 
 	so_long = NULL;
 	if (ac != 2)
@@ -75,5 +82,5 @@ int main(int ac, char **av)
 	mlx_hook(so_long->window, KeyPress, KeyPressMask, listener, so_long);
 	mlx_hook(so_long->window, DestroyNotify, 0, exit_game, so_long);
 	mlx_loop(so_long->mlx);
-	return 0;
+	return (0);
 }

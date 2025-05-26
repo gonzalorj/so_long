@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cleaner.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gorodrig <gorodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 12:18:43 by gorodrig          #+#    #+#             */
+/*   Updated: 2025/05/26 12:22:19 by gorodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
 void	clean_tmp_map(char **map, int row)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < row)
+	while (i < row)
 	{
 		free(map[i]);
 		i++;
@@ -13,19 +25,19 @@ void	clean_tmp_map(char **map, int row)
 	free(map);
 }
 
-static void	clean_map (t_map *map)
+static void	clean_map(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	if(map->mat)
+	if (map->mat)
 	{
-		while(i < map->row)
-			{
-				free(map->mat[i]);
-				i++;
-			}
-			free(map->mat);
+		while (i < map->row)
+		{
+			free(map->mat[i]);
+			i++;
+		}
+		free(map->mat);
 	}
 	free(map);
 }

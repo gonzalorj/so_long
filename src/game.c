@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gorodrig <gorodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 12:18:49 by gorodrig          #+#    #+#             */
+/*   Updated: 2025/05/26 12:18:49 by gorodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-t_map *start_map(void)
+t_map	*start_map(void)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = (t_map *)ft_calloc(1, sizeof(t_map));
 	if (!map)
@@ -10,9 +22,9 @@ t_map *start_map(void)
 	return (map);
 }
 
-t_graph *start_graphs(void)
+t_graph	*start_graphs(void)
 {
-	t_graph *graphs;
+	t_graph	*graphs;
 
 	graphs = (t_graph *)ft_calloc(1, sizeof(t_graph));
 	if (!graphs)
@@ -20,9 +32,9 @@ t_graph *start_graphs(void)
 	return (graphs);
 }
 
-t_game *start_game(void)
+t_game	*start_game(void)
 {
-	t_game *so_long;
+	t_game	*so_long;
 
 	so_long = (t_game *)ft_calloc(1, sizeof(t_game));
 	if (!so_long)
@@ -37,22 +49,22 @@ t_game *start_game(void)
 	return (so_long);
 }
 
-void start_mlx(t_game *game)
+void	start_mlx(t_game *game)
 {
 	game->mlx = mlx_init();
 	if (!game->mlx)
 		error_clean(game, "Mlx fail.", 1);
 	game->window = mlx_new_window(game->mlx, (game->map->col * PIXELS),
-								  (game->map->row * PIXELS), "so_long");
+			(game->map->row * PIXELS), "so_long");
 	if (!game->window)
 		error_clean(game, "Mlx window failed", 1);
 }
 
-void count_elements(t_game *game)
+void	count_elements(t_game *game)
 {
-	char c;
-	int i;
-	int j;
+	char	c;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (++i < game->map->row)

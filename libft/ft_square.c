@@ -10,9 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_square(int number)
+int	ft_square(int number)
 {
-	int i;
+	int	i;
 
 	if (number < 4)
 		return (1);

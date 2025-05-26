@@ -12,9 +12,9 @@
 
 #include "libft.h"
 
-void free_array(char **arr)
+void	free_array(char **arr)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (arr)

@@ -13,10 +13,10 @@
 #include <stdint.h>
 #include <stdbool.h>
 
-bool ft_isspace(int32_t c)
+bool	ft_isspace(int32_t c)
 {
-	if (c == ' ' || c == '\n' || c == '\t' ||
-		c == '\v' || c == '\f' || c == '\r')
+	if (c == ' ' || c == '\n' || c == '\t'
+		|| c == '\v' || c == '\f' || c == '\r')
 		return (true);
 	return (false);
 }

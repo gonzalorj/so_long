@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   listener.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gorodrig <gorodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 12:18:54 by gorodrig          #+#    #+#             */
+/*   Updated: 2025/05/26 12:18:54 by gorodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-int exit_game(t_game *game)
+int	exit_game(t_game *game)
 {
 	error_clean(game, "Game stopped", 0);
-	return 0;
+	return (0);
 }
 
-static void print_moves(t_game *game)
+static void	print_moves(t_game *game)
 {
 	ft_putstr_fd("Moves:", 1);
 	ft_putnbr_fd(game->player.moves++, 1);
@@ -21,10 +33,10 @@ static void print_moves(t_game *game)
 		error_clean(game, "Game stopped", 0);
 }
 
-static void input_move(int input, t_game *game)
+static void	input_move(int input, t_game *game)
 {
-	int row;
-	int col;
+	int	row;
+	int	col;
 
 	row = game->player.row;
 	col = game->player.col;
@@ -46,12 +58,10 @@ static void input_move(int input, t_game *game)
 	}
 }
 
-
-
-int listener(int input, t_game *game)
+int	listener(int input, t_game *game)
 {
-	if (input == XK_w || input == XK_a || 
-		input == XK_s || input == XK_d || input == XK_Escape);
+	if (input == XK_w || input == XK_a
+		|| input == XK_s || input == XK_d || input == XK_Escape)
 	{
 		input_move(input, game);
 		load(game);

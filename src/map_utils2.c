@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_utils2.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gorodrig <gorodrig@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/26 12:19:07 by gorodrig          #+#    #+#             */
+/*   Updated: 2025/05/26 12:19:07 by gorodrig         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/so_long.h"
 
-static void flood_fill(char **map, int *to_obtain, int row, int col)
+static void	flood_fill(char **map, int *to_obtain, int row, int col)
 {
 	if (map[row][col] == '1' || *to_obtain == 0)
-		return;
+		return ;
 	if (map[row][col] == 'E' || map[row][col] == 'C')
 		(*to_obtain)--;
 	map[row][col] = '1';
@@ -13,10 +25,10 @@ static void flood_fill(char **map, int *to_obtain, int row, int col)
 	flood_fill(map, to_obtain, row - 1, col);
 }
 
-static char **tmp_map(t_game *game)
+static char	*tmp_map(t_game *game)
 {
-	char **map;
-	int i;
+	char	**map;
+	int		i;
 
 	i = 0;
 	map = (char **)ft_calloc(game->map->row, sizeof(char *));
@@ -36,7 +48,7 @@ static char **tmp_map(t_game *game)
 	return (map);
 }
 
-void check_elements(t_game *game)
+void	check_elements(t_game *game)
 {
 	count_elements(game);
 	if (game->map->e_c != 1)
@@ -47,9 +59,9 @@ void check_elements(t_game *game)
 		error_clean(game, "At least 1 collectible necessary", 1);
 }
 
-void check_borders(t_game *game)
+void	check_borders(t_game *game)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < game->map->col)
@@ -69,10 +81,10 @@ void check_borders(t_game *game)
 	}
 }
 
-void check_fill(t_game *game)
+void	check_fill(t_game *game)
 {
-	char **map;
-	int to_obtain;
+	char	**map;
+	int		to_obtain;
 
 	to_obtain = game->map->c_c + game->map->e_c;
 	map = tmp_map(game);
@@ -84,4 +96,3 @@ void check_fill(t_game *game)
 	}
 	clean_tmp_map(map, game->map->row);
 }
-
