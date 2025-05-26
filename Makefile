@@ -13,6 +13,7 @@ SRC = src/cleaner.c \
 		src/map_utils.c \
 		src/map_utils2.c \
 		src/renders.c 
+NRM_DIR = ./src ./includes ./libft
 
 all: $(MLX) $(LIBFT) obj $(NAME)
 
@@ -46,6 +47,9 @@ fclean:		clean
 			@echo "Exe clean!"
 
 re:			fclean all
+
+norm:
+			norminette $(NRM_DIR)
 
 .PHONY:		all clean fclean re
 
