@@ -1,6 +1,6 @@
 #include "../includes/so_long.h"
 
-void clean_tmp_map(char **map, int row)
+void	clean_tmp_map(char **map, int row)
 {
 	int i;
 
@@ -13,7 +13,7 @@ void clean_tmp_map(char **map, int row)
 	free(map);
 }
 
-static void clean_map (t_map *map)
+static void	clean_map (t_map *map)
 {
 	int i;
 
@@ -30,7 +30,7 @@ static void clean_map (t_map *map)
 	free(map);
 }
 
-static void clean_sprites(void *mlx, t_graph *img)
+static void	clean_sprites(void *mlx, t_graph *img)
 {
 	if (img->wall)
 		mlx_destroy_image(mlx, img->wall);
@@ -44,7 +44,7 @@ static void clean_sprites(void *mlx, t_graph *img)
 		mlx_destroy_image(mlx, img->exit);
 }
 
-static void clean_game(t_game *game)
+static void	clean_game(t_game *game)
 {
 	if (game)
 	{
@@ -67,7 +67,7 @@ static void clean_game(t_game *game)
 	}
 }
 
-void error_clean(t_game *game, char *s, int error)
+void	error_clean(t_game *game, char *s, int error)
 {
 	if (game)
 		clean_game(game);

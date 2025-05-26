@@ -6,7 +6,7 @@ static void *mlx_image(t_game *game, char *path)
 	int width;
 	int height;
 
-	img = mlx_xpm_file_to_image(game->mlx, img, &width, &height);
+	img = mlx_xpm_file_to_image(game->mlx, path, &width, &height);
 	if (!img)
 		error_clean(game, "Mlx img failed.", 1);
 	return (img);
