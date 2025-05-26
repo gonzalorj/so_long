@@ -25,7 +25,7 @@ static void	flood_fill(char **map, int *to_obtain, int row, int col)
 	flood_fill(map, to_obtain, row - 1, col);
 }
 
-static char	*tmp_map(t_game *game)
+static char	**tmp_map(t_game *game)
 {
 	char	**map;
 	int		i;
