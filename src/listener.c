@@ -40,13 +40,13 @@ static void	input_move(int input, t_game *game)
 
 	row = game->player.row;
 	col = game->player.col;
-	if (input == XK_w || input == XK_Up)
+	if (input == XK_w)
 		row--;
-	else if (input == XK_s || input == XK_Down)
+	else if (input == XK_s)
 		row++;
-	else if (input == XK_a || input == XK_Left)
+	else if (input == XK_a)
 		col--;
-	else if (input == XK_d || input == XK_Right)
+	else if (input == XK_d)
 		col++;
 	else if (input == XK_Escape)
 		error_clean(game, "Game stopped", 0);

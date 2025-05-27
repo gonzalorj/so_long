@@ -30,7 +30,6 @@ typedef struct s_player
 	int	row;
 	int	col;
 	int	moves;
-	int	points;
 }	t_player;
 
 typedef struct s_map
