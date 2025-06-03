@@ -12,11 +12,6 @@
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# define WALL '1'
-# define PLAYER 'P'
-# define EXIT 'E'
-# define COLLECTIBLE 'C'
-# define EMPTY '0'
 
 # include "../mlx/mlx.h"
 # include "../mlx/mlx_int.h"
