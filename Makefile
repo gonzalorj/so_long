@@ -18,7 +18,7 @@ NRM_DIR = ./src ./includes ./libft
 all: $(MLX) $(LIBFT) obj $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(FLAGS) -fsanitize=address -o $@ $^ $(LIB)
+	@$(CC) $(FLAGS) -fsanitize=address -o $@ $^ $(LIB)
 
 $(MLX):
 		@echo "Compiling mlx.."
@@ -34,7 +34,7 @@ obj:
 			@mkdir -p obj
 
 obj/%.o:	src/%.c
-			$(CC) $(FLAGS) $(INC) -o $@ -c $<
+			@$(CC) $(FLAGS) $(INC) -o $@ -c $<
 
 clean:
 			@make -s $@ -C libft
